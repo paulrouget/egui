@@ -1,4 +1,5 @@
 use winit::event_loop::EventLoopWindowTarget;
+use winit::platform::macos::WindowBuilderExtMacOS;
 
 use egui_winit::{native_pixels_per_point, EventResponse, WindowSettings};
 
@@ -61,6 +62,9 @@ pub fn window_builder(
         .with_maximized(*maximized)
         .with_resizable(*resizable)
         .with_transparent(*transparent)
+        .with_title_hidden(true)
+        .with_titlebar_transparent(true)
+        .with_fullsize_content_view(true)
         .with_window_icon(window_icon);
 
     if let Some(min_size) = *min_window_size {
